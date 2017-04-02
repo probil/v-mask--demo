@@ -1,6 +1,8 @@
 # v-mask--demo
 
-> Examples for `v-mask` plugin
+Examples repo for [v-mask](https://github.com/probil/v-mask) plugin.
+
+[Check the demo here](https://rawgit.com/probil/v-mask--demo/master/dist/index.html)
 
 ## Build Setup
 
