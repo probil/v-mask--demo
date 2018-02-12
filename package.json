@@ -29,7 +29,7 @@
     "cross-spawn": "5.1.0",
     "css-loader": "0.26.4",
     "eventsource-polyfill": "0.9.6",
-    "express": "4.15.3",
+    "express": "4.16.2",
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.10.1",
     "friendly-errors-webpack-plugin": "1.6.1",
