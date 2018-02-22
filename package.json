@@ -27,7 +27,7 @@
     "connect-history-api-fallback": "1.5.0",
     "copy-webpack-plugin": "4.4.1",
     "cross-spawn": "5.1.0",
-    "css-loader": "0.26.4",
+    "css-loader": "0.28.10",
     "eventsource-polyfill": "0.9.6",
     "express": "4.15.3",
     "extract-text-webpack-plugin": "2.1.2",
