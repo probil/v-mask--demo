@@ -1,0 +1,31 @@
+{
+  "name": "v-mask--demo",
+  "version": "2.0.0",
+  "description": "Examples for `v-mask` plugin",
+  "author": "Max Lyashuk <m_lyashuk@ukr.net>",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:e2e": "vue-cli-service test:e2e"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "v-mask": "1.3.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.0.5",
+    "@vue/cli-plugin-eslint": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
