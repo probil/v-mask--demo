@@ -1,79 +1,53 @@
-// For authoring Nightwatch tests, see
-// http://nightwatchjs.org/guide#usage
+/* =============== *\
+   HOOKS
+\* =============== */
+module.exports.before = browser => {
+  browser
+    .url(process.env.VUE_DEV_SERVER_URL)
+    .waitForElementVisible('.container', 5000)
+};
 
-module.exports = {
-  after(browser) {
-    console.log('Closing down...');
-    browser.end();
-  },
+module.exports.after = browser => {
+  browser.end();
+};
 
-  'Date and time'(browser) {
-    const input = 'input#time-and-date-ex';
 
+/* =============== *\
+   TESTS
+\* =============== */
+module.exports['Real-world masks'] = browser => {
+  const inputs = [
+    {
+      selector: 'input#time-and-date-ex',
+      value: '271020162315',
+      expected: '27/10/2016 23:15',
+    },
+    {
+      selector: 'input#time-ex',
+      value: '111515',
+      expected: '11:15:15',
+    },
+    {
+      selector: 'input#credit-cart-ex',
+      value: '4444444444444444',
+      expected: '4444 4444 4444 4444',
+    },
+    {
+      selector: 'input#phone-number-ex',
+      value: '9999999999',
+      expected: '(999) 999-9999',
+    },
+    {
+      selector: 'input#us-phone-number-ex',
+      value: '9999999999',
+      expected: '+1(999)-999-9999',
+    },
+  ];
+
+  inputs.forEach(input => {
     browser
-      .url(process.env.VUE_DEV_SERVER_URL)
-      .waitForElementVisible('.container', 5000)
-      .assert.elementPresent(input)
-      .setValue(input,'271020162315')
-      .getValue(input, function (result) {
-        this.assert.equal(typeof result, "object");
-        this.assert.equal(result.value, "27/10/2016 23:15");
-      });
-  },
-
-  'Time with seconds'(browser) {
-    const input = 'input#time-ex';
-
-    browser
-      .url(process.env.VUE_DEV_SERVER_URL)
-      .waitForElementVisible('.container', 5000)
-      .assert.elementPresent(input)
-      .setValue(input, '111515')
-      .getValue(input, function (result) {
-        this.assert.equal(typeof result, "object");
-        this.assert.equal(result.value, "11:15:15");
-      });
-  },
-
-  'Credit Card'(browser) {
-    const input = 'input#credit-cart-ex';
-
-    browser
-      .url(process.env.VUE_DEV_SERVER_URL)
-      .waitForElementVisible('.container', 5000)
-      .assert.elementPresent(input)
-      .setValue(input, '4444444444444444')
-      .getValue(input, function (result) {
-        this.assert.equal(typeof result, "object");
-        this.assert.equal(result.value, "4444 4444 4444 4444");
-      });
-  },
-
-  'Phone Number'(browser) {
-    const input = 'input#phone-number-ex';
-
-    browser
-      .url(process.env.VUE_DEV_SERVER_URL)
-      .waitForElementVisible('.container', 5000)
-      .assert.elementPresent(input)
-      .setValue(input, '9999999999')
-      .getValue(input, function (result) {
-        this.assert.equal(typeof result, "object");
-        this.assert.equal(result.value, "(999) 999-9999");
-      });
-  },
-
-  'Phone Number (US)'(browser) {
-    const input = 'input#us-phone-number-ex';
-
-    browser
-      .url(process.env.VUE_DEV_SERVER_URL)
-      .waitForElementVisible('.container', 5000)
-      .assert.elementPresent(input)
-      .setValue(input, '9999999999')
-      .getValue(input, function (result) {
-        this.assert.equal(typeof result, "object");
-        this.assert.equal(result.value, "+1(999)-999-9999");
-      });
-  },
+      .assert.elementPresent(input.selector)
+      .setValue(input.selector, input.value)
+      .expect.element(input.selector).to.have.value.that.equals(input.expected);
+  });
 };
