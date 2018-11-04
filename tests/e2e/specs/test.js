@@ -2,7 +2,12 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'Date and time': function (browser) {
+  after(browser) {
+    console.log('Closing down...');
+    browser.end();
+  },
+
+  'Date and time'(browser) {
     const input = 'input#time-and-date-ex';
 
     browser
@@ -13,11 +18,10 @@ module.exports = {
       .getValue(input, function (result) {
         this.assert.equal(typeof result, "object");
         this.assert.equal(result.value, "27/10/2016 23:15");
-      })
-      .end();
+      });
   },
 
-  'Time with seconds': function (browser) {
+  'Time with seconds'(browser) {
     const input = 'input#time-ex';
 
     browser
@@ -28,11 +32,10 @@ module.exports = {
       .getValue(input, function (result) {
         this.assert.equal(typeof result, "object");
         this.assert.equal(result.value, "11:15:15");
-      })
-      .end()
+      });
   },
 
-  'Credit Card': function (browser) {
+  'Credit Card'(browser) {
     const input = 'input#credit-cart-ex';
 
     browser
@@ -43,11 +46,10 @@ module.exports = {
       .getValue(input, function (result) {
         this.assert.equal(typeof result, "object");
         this.assert.equal(result.value, "4444 4444 4444 4444");
-      })
-      .end()
+      });
   },
 
-  'Phone Number': function (browser) {
+  'Phone Number'(browser) {
     const input = 'input#phone-number-ex';
 
     browser
@@ -58,11 +60,10 @@ module.exports = {
       .getValue(input, function (result) {
         this.assert.equal(typeof result, "object");
         this.assert.equal(result.value, "(999) 999-9999");
-      })
-      .end()
+      });
   },
 
-  'Phone Number (US)': function (browser) {
+  'Phone Number (US)'(browser) {
     const input = 'input#us-phone-number-ex';
 
     browser
@@ -73,7 +74,6 @@ module.exports = {
       .getValue(input, function (result) {
         this.assert.equal(typeof result, "object");
         this.assert.equal(result.value, "+1(999)-999-9999");
-      })
-      .end()
+      });
   },
 };
